@@ -39,17 +39,22 @@ public class UIView extends RectView{
 		for(UIComponent i : components) {
 			if(i.mouseOver) {
 				i.MouseClick();
+				break;
 			}
 		}
 	}
 	@Override
-	public void MousePressed() {
+	public boolean MousePressed() {
 		ArrayList<UIComponent> components = new ArrayList<UIComponent>();
 		components.addAll(this.components);
+		boolean ret = false;
 		for(UIComponent i : components) {
-			if(i.mouseOver)
-				i.MousePressed();
+			if(i.mouseOver) {
+				ret = ret||i.MousePressed();
+				break;
+			}
 		}
+		return ret;
 	}
 	@Override
 	public void MouseReleased() {

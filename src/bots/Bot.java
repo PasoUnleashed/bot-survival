@@ -1,7 +1,15 @@
 package bots;
 
+import display.Rectangle;
+import display.ScrollView;
+import display.UIView;
+import display.Button;
+import display.ButtonEventHandler;
+import display.Color;
 import display.RectView;
 import gameScene.MapView;
+import processing.core.PApplet;
+import processing.core.PImage;
 import processing.core.PVector;
 import routines.routineExecution.RoutineMachine;
 import routines.routineExecution.RoutineMemory;
@@ -23,7 +31,9 @@ public class Bot extends world.WorldObject {
 	 * The bot's current memory
 	 */
 	RoutineMemory memory;
+	Button b;
 	/*
+	 * 
 	 * Create a bot at a certain position
 	 * @param x the x coordinate of the bot
 	 * @param y the y coordinate of the bot
@@ -47,6 +57,35 @@ public class Bot extends world.WorldObject {
 		Routine routine = new Routine(3,start,"main",new StepOutcome[0],new StepInput[0]);
 		machine= new RoutineMachine(routine,m);
 		memory = m;
+		Button b = new Button(new Rectangle(this.getRect().getX()+20,this.getRect().getY()+20,10,10),this.getParent(),new ButtonEventHandler() {
+
+			@Override
+			public void OnClick() {
+				// TODO Auto-generated method stub
+				world.AddObject(new Bot(getRect().getX(),getRect().getY(),world));
+			}
+
+			@Override
+			public void OnEnter() {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void OnLeave() {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		},"hello",new Color(255,0,0),null);
+		b.Hide();
+		this.b=b;
+	}
+	@Override
+	public void SetView(UIView view) {
+		super.SetView(view);
+		view.getComponents().add(b);
+		b.SetView(view);
 	}
 	/*
 	 * (non-Javadoc)
@@ -55,6 +94,16 @@ public class Bot extends world.WorldObject {
 	@Override
 	public void Frame() {
 		machine.ExecuteStep(this,this.world);
+		b.getRect().setX(this.getRect().getX()+20);
+		b.getRect().setY(this.getRect().getY()-20);
+		float distance =PApplet.dist(getParent().getMouseX(), getParent().getMouseY(), getRect().getX(),getRect().getY());
+		System.out.println(distance);
+		if(distance<60) {
+			b.Show();
+			
+		}else {
+			b.Hide();
+		}
 		super.Frame();
 	}
 	/*

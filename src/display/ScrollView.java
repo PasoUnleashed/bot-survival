@@ -1,9 +1,12 @@
 package display;
 
+import java.util.ArrayList;
+
 import processing.core.PApplet;
 
 public abstract class ScrollView extends UIComponent{
 	int scrollx,scrolly;
+	int rm_x,rm_y;
 	public ScrollView(Rectangle rect, UIView parent) {
 		super(rect, parent);
 		// TODO Auto-generated constructor stub
@@ -33,6 +36,23 @@ public abstract class ScrollView extends UIComponent{
 	}
 	public int getScrolly() {
 		return scrolly;
+	}
+	@Override
+	public void SetKeys(boolean[] keys,int x,int y) {
+		super.SetKeys(keys, x+scrollx, y+scrolly);
+		if(rect.IsInBound(x, y)) {
+			mouseOver=true;
+			
+		}
+		else {
+			mouseOver=false;
+		}
+		ArrayList<UIComponent> components = new ArrayList<UIComponent>();
+		components.addAll(this.components);
+		for(UIComponent i : components) {
+			i.SetKeys(keys, mouseX, mouseY);
+		}
+		
 	}
 
 

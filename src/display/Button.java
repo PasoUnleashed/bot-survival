@@ -38,7 +38,7 @@ public class Button extends UIComponent{
 	 */
 	// TODO Add Another constructor so that a button can either be initialized with an image
 	// or a color set (default,hover,press) 
-	public Button(Rectangle rect, RectView parent,ButtonEventHandler handler,String text, Color color, PImage image) {
+	public Button(Rectangle rect, UIView parent,ButtonEventHandler handler,String text, Color color, PImage image) {
 		super(rect, parent);
 		this.image=image;
 		this.color=color;
@@ -57,8 +57,9 @@ public class Button extends UIComponent{
 	boolean isPressed=false;
 	//Overriding the MousePressed() function of RectView, so that we can invoke behavior upon mouse events 
 	@Override
-	public void MousePressed() {
+	public boolean MousePressed() {
 		isPressed=true;
+		return true;
 	}
 	//Overriding the MouseReleased() function of RectView, so that we can invoke behavior upon mouse events
 	public void MouseReleased() {

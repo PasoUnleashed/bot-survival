@@ -17,7 +17,7 @@ public class Toolbar extends UIComponent {
 	 * @param rect the rectangle that bounds the toolbar
 	 * @param parent the RectView which this toolbar will be on
 	 */
-	public Toolbar(Rectangle rect,RectView parent) {
+	public Toolbar(Rectangle rect,UIView parent) {
 		super(rect,parent);
 		buttons = new ArrayList<>();
 		buttons.add(new ArrayList<Button>());

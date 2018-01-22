@@ -9,8 +9,9 @@ public abstract class ScrollComponent extends UIComponent {
 		scrollView=parent;
 		// TODO Auto-generated constructor stub
 	}
-	public void SetView(ScrollView view) {
-		this.parent=this.scrollView=view;
+	@Override
+	public void SetView(UIView view) {
+		this.parent=this.scrollView=(ScrollView)view;
 		this.applet=view.applet;
 	}
 	public boolean IsInView() {

@@ -18,8 +18,13 @@ public class MapView extends ScrollView {
 		this.map=map;
 		map.getWorld().SetCurrentView(this);
 	}
-	
-	
+	@Override
+	public boolean MousePressed() {
+		if(!super.MousePressed()) {
+			map.getWorld().AddObject(data.Resources.Food.Create(mouseX, mouseY,map.getWorld()));
+		}	
+		return true;
+	}
 	@Override
 	public void DrawComponent() {
 		this.getApplet().fill(0);

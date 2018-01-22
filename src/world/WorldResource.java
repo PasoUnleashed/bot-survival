@@ -22,6 +22,9 @@ public class WorldResource extends WorldObject {
 	@Override
 	public void Frame() {
 		super.Frame();
+		if(isMouseOver()) {
+			System.out.println("mouse");
+		}
 	}
 	@Override
 	public void Draw() {

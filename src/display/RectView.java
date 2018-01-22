@@ -8,7 +8,7 @@ import processing.core.PVector;
 public abstract class RectView {
 	Rectangle rect;
 	boolean mouseOver=false;
-	int mouseX=-1,mouseY=-1;
+	protected int mouseX=-1,mouseY=-1;
 	PApplet applet;
 	protected boolean[] keys = new boolean[255];
 	public PApplet getApplet() {
@@ -21,6 +21,16 @@ public abstract class RectView {
 	public RectView(Rectangle rect,PApplet applet) {
 		this.rect=rect;
 		this.applet=applet;
+	}
+	
+	public int getMouseX() {
+		return mouseX;
+	}
+	public int getMouseY() {
+		return mouseY;
+	}
+	public boolean[] getKeys() {
+		return keys;
 	}
 	/*
 	 * This abstract function is invoked once every frame, in it all the class calculations and handling
@@ -54,6 +64,9 @@ public abstract class RectView {
 			this.mouseOver=true;
 		}
 		
+	}
+	public boolean isMouseOver() {
+		return mouseOver;
 	}
 	/*
 	 * This function returns a position adjusted to be drawn on the applet. Example:
@@ -112,8 +125,8 @@ public abstract class RectView {
 	public void RightClick() {
 		
 	}
-	public void MousePressed() {
-		
+	public boolean MousePressed() {
+		return false;
 	}
 	public void MouseReleased() {
 		

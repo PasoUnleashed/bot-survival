@@ -29,7 +29,7 @@ public class MoveToStep extends Step{
 		PVector pos = new PVector(bot.getRect().getX(),bot.getRect().getY());
 		PVector in =(PVector)getInputs().get(0).getVar().getData();
 		PVector inn = new PVector(in.x,in.y);
-		PVector direction = (inn).sub(pos).normalize().mult(5);
+		PVector direction = (inn).sub(pos).normalize().mult(2);
 		pos=pos.add(direction);
 		bot.getRect().setX((long) pos.x);
 		bot.getRect().setY((long) pos.y);
