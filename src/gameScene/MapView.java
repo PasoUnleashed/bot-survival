@@ -1,53 +1,32 @@
 package gameScene;
 
 import world.Map;
-
+import world.WorldObject;
 import display.RectView;
 import display.Rectangle;
+import display.ScrollView;
 import display.UIComponent;
+import display.UIView;
 import processing.core.PApplet;
+import processing.core.PVector;
 
-public class MapView extends UIComponent {
-	long camx,camy;
+public class MapView extends ScrollView {
 	Map map;
-	public MapView(Rectangle rect, RectView parent,Map map) {
+	public MapView(Rectangle rect, UIView parent,Map map) {
 		super(rect, parent);
 		// TODO Auto-generated constructor stub
-		camx=0;
-		camy=0;
 		this.map=map;
-		
+		map.getWorld().SetCurrentView(this);
 	}
-	public void ScrollCamera(int x,int y) {
-		camx+=x;
-		camy+=y;
-	}
-	@Override
-	public void Frame() {
-		// TODO Auto-generated method stub
-		int x=0;
-		int y=0;
-		int speed=10;
-		if(keys['w']) {
-			y-=speed;
-		}
-		if(keys['s']) {
-			y+=speed;
-		}
-		if(keys['a']) {
-			x-=speed;
-		}
-		if(keys['d']) {
-			x+=speed;
-		}
-		ScrollCamera(x,y);
-	}
-
+	
+	
 	@Override
 	public void DrawComponent() {
-		// TODO Auto-generated method stub
-		this.map.Draw(this,-camx+getRect().getWidth()/2,-camy+getRect().getHeight()/2);
+		this.getApplet().fill(0);
+		PVector pos = GetPosOnApplet(0,0);
+		getApplet().rect(pos.x,pos.y,getRect().getWidth(),getRect().getHeight());
 	}
+	
 	
 
 }

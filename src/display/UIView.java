@@ -81,6 +81,9 @@ public class UIView extends RectView{
 			}
 		}
 	}
+	public void setComponents(ArrayList<UIComponent> components) {
+		this.components = components;
+	}
 	public void DrawComponent() {
 		
 	}

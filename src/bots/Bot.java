@@ -1,6 +1,7 @@
 package bots;
 
 import display.RectView;
+import gameScene.MapView;
 import processing.core.PVector;
 import routines.routineExecution.RoutineMachine;
 import routines.routineExecution.RoutineMemory;
@@ -52,18 +53,20 @@ public class Bot extends world.WorldObject {
 	 * @see world.WorldObject#Update()
 	 */
 	@Override
-	public void Update() {
+	public void Frame() {
 		machine.ExecuteStep(this,this.world);
+		super.Frame();
 	}
 	/*
 	 * (non-Javadoc)
 	 * @see world.WorldObject#Draw(display.RectView, int, int)
 	 */
 	@Override
-	public void Draw(RectView v, int x, int y) {
+	public void DrawComponent() {
 		// TODO Auto-generated method stub
-		v.getApplet().fill(255,0,0);
-		v.getApplet().rect(x, y, rect.getWidth(),rect.getHeight());
+		PVector drawpos = GetDrawPosition();
+		getApplet().fill(255,0,0);
+		getApplet().rect(drawpos.x, drawpos.y, getRect().getWidth(),getRect().getHeight());
 	}
 	
 }

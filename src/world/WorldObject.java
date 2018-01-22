@@ -3,35 +3,23 @@ package world;
 
 import display.RectView;
 import display.Rectangle;
+import display.ScrollComponent;
+import display.ScrollView;
 
-public abstract class WorldObject {
-	protected Rectangle rect;
+public abstract class WorldObject extends ScrollComponent{
+	public WorldObject(long x,long y,World w) {
+		super(new Rectangle(x,y,5,5), null);
+		this.world=w;
+		// TODO Auto-generated constructor stub
+	}
 	protected boolean isCollider;
 	protected World world;
-	public WorldObject(long x,long y,World w) {
-		world=w;
-		rect = new Rectangle(x,y,5,5);
-		
-	}
-	public Rectangle getRect() {
-		return rect;
-	}
+	
 	public boolean isCollider() {
 		return isCollider;
 	}
 	public World getWorld() {
 		return world;
 	}
-	public WorldObject() {
-		
-	}
-	public void Update() {
-		
-	}
-	public abstract void Draw(RectView v,int x,int y);
-	public void Update(boolean[] keys) {
-		// TODO Auto-generated method stub
-		Update();
-	}
-
+	
 }

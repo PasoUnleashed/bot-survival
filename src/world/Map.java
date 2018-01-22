@@ -1,6 +1,10 @@
 package world;
 import java.util.ArrayList;
 import display.RectView;
+import display.Rectangle;
+import display.ScrollView;
+import display.UIView;
+import gameScene.MapView;
 import processing.core.PVector;
 public class Map {
 	ArrayList<WorldObject> objects;
@@ -14,6 +18,7 @@ public class Map {
 		world=w;
 		objects=new ArrayList<>();
 	}
+	
 	public long getMax_x() {
 		return max_x;
 	}
@@ -29,32 +34,13 @@ public class Map {
 	public World getWorld() {
 		return world;
 	}
-	public void Update() {
+	public void Frame() {
 		for(WorldObject o : objects) {
-			o.Update();
+			o.Frame();
 		}
 		
 	}
-	public void Update(boolean[] keys) {
-		for(WorldObject o : objects) {
-			o.Update(keys);
-		}
-		
-	}
-	public void Draw(RectView v,long cameraX,long cameraY) {
-		long xoffset = -cameraX-v.getRect().getWidth()/2;
-		long yoffset = -cameraY-v.getRect().getHeight()/2;
-		v.getApplet().fill(0);
-		v.getApplet().rect(v.getRect().getX(), v.getRect().getY(),v.getRect().getWidth(),v.getRect().getHeight());
-		for(WorldObject o : objects) {		
-			
-				PVector pos = v.GetPosOnApplet(o.rect.getX()-xoffset, o.rect.getY()-yoffset);
-			if(v.getRect().IsInBound((int)pos.x,(int)pos.y)) {
-				o.Draw(v,(int)pos.x,(int)pos.y);
-			}
-			
-		}
-	}
+	
 	public ArrayList<WorldObject> getObjects() {
 		return objects;
 	}

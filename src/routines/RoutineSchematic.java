@@ -2,7 +2,6 @@ package routines;
 
 import java.util.HashMap;
 
-import gameScene.routineEditor.RoutineVisualSchematic;
 import routines.routineExecution.ReadOnlyMemory;
 
 public class RoutineSchematic {

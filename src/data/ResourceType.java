@@ -1,6 +1,7 @@
 package data;
 
 import display.Color;
+import gameScene.MapView;
 import world.World;
 
 public class ResourceType{
@@ -46,6 +47,6 @@ public class ResourceType{
 		this.respawnTime = respawntime;
 	}
 	public world.WorldResource Create(long x,long y,World w){
-		return new world.WorldResource(x, y,w, this);
+		return new world.WorldResource(x, y,this,w);
 	}
 }

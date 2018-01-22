@@ -7,11 +7,14 @@ import processing.core.PVector;
  */
 public abstract class UIComponent extends UIView{
 	RectView parent;
-	boolean hidden;
+	boolean hidden=false;
 	public UIComponent(Rectangle rect,RectView parent) {
-		super(rect, parent.applet);
+		super(rect, null);
 		// TODO Auto-generated constructor stub
 		this.parent=parent;
+		if(parent!=null) {
+			applet=parent.applet;
+		}
 	}
 	/*
 	 * (non-Javadoc)
@@ -27,6 +30,9 @@ public abstract class UIComponent extends UIView{
 		PVector pos =new PVector(this.rect.getX()+x,this.rect.getY()+y);
 		return parent.GetPosOnApplet(pos.x, pos.y);
 	}
+	public RectView getParent() {
+		return parent;
+	}
 	public boolean isHidden() {
 		return hidden;
 	}
@@ -40,6 +46,9 @@ public abstract class UIComponent extends UIView{
 	public void Hide() {
 		hidden=true;
 	}
-	
+	public PVector GetDrawPosition() {
+		return parent.GetPosOnApplet(rect.x,rect.y);
+		
+	}
 	public abstract void DrawComponent();
 }

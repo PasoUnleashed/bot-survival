@@ -19,6 +19,9 @@ public class RoutineMachine {
 	}
 	public void ExecuteStep(Bot bot,World world) {
 		//System.out.println("Executing :"+currentStep.getName());
+		if(world==null) {
+			System.out.println("Null");
+		}
 		StepOutcome outcome = currentStep.Execute(bot, world,world.getMap(), null, null);
 		//System.out.println(currentStep.getName());
 		if(outcome.getNext()!=null) {
