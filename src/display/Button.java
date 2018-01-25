@@ -91,9 +91,9 @@ public class Button extends UIComponent{
 	//Overriding the DrawComponent function is a must for any concrete UIComponent
 	@Override
 	public void DrawComponent() {
-		PVector drawpos = parent.GetPosOnApplet(rect.x, rect.y);
 		applet.fill(color.r,color.g,color.b);
-		applet.rect(drawpos.x, drawpos.y, rect.width,rect.height);
+		Rectangle drawrect = GetDrawRectangle();
+		getApplet().rect(drawrect.x,drawrect.y,drawrect.width,drawrect.height);
 	}
 	
 }

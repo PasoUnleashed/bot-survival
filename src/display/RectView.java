@@ -77,8 +77,12 @@ public abstract class RectView {
 	 * if the element is to be drawn on the applet it has to be drawn at the position (20,40)
 	 * since the (0,0) position of the view lies at the position (10,10) in the applet
 	 */
-	public PVector GetPosOnApplet(float x,float y) {
-		return new PVector(this.rect.getX()+x,this.rect.getY()+y);
+	public Rectangle GetRectOnApplet(Rectangle rect) {
+		return new Rectangle (rect.x+this.rect.x,rect.y+this.rect.y,rect.width,rect.height);
+	}
+	public Rectangle GetDrawRectangle() {
+		return rect;
+		
 	}
 	public Rectangle getRect() {
 		return rect;
@@ -97,7 +101,11 @@ public abstract class RectView {
 	 * These empty functions are invoked whenever their appropriate event occurs, 
 	 * but are empty so that child classes can chose not to implement them.
 	 */
-	
+	public void Background(int r,int g,int b) {
+		applet.fill(r,g,b);
+		Rectangle rect  = GetDrawRectangle();
+		applet.rect(rect.x, rect.y, rect.width, rect.height);
+	}
 	
 	
 	public void OnStart() {

@@ -53,9 +53,9 @@ public class Bot extends world.WorldObject {
 	@Override
 	public void DrawComponent() {
 		// TODO Auto-generated method stub
-		PVector drawpos = GetDrawPosition();
 		getApplet().fill(255,0,0);
-		getApplet().rect(drawpos.x, drawpos.y, getRect().getWidth(),getRect().getHeight());
+		Rectangle drawrect = GetDrawRectangle();
+		getApplet().rect(drawrect.getX(),drawrect.getY(),drawrect.getWidth(),drawrect.getHeight());
 	}
 	
 }

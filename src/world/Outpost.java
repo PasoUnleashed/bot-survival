@@ -52,10 +52,8 @@ public class Outpost extends Building{
 	@Override
 	public void DrawComponent() {
 		getApplet().fill(255);
-		PVector pos = GetDrawPosition();
-		if(pos!=null) {
-			getApplet().rect(pos.x,pos.y, getRect().getWidth(), getRect().getHeight());
-		}
+		Rectangle drawrect = GetDrawRectangle();
+		getApplet().rect(drawrect.getX(),drawrect.getY(),drawrect.getWidth(),drawrect.getHeight());
 	}
 
 	

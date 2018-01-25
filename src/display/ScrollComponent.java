@@ -30,11 +30,11 @@ public abstract class ScrollComponent extends UIComponent {
 		return false;
 	}
 	@Override 
-	public PVector GetDrawPosition() {
+	public Rectangle GetDrawRectangle() {
 		if(IsInView()) {
 			long drawx = this.rect.getX()-scrollView.getScrollx();
 			long drawy = this.rect.getY()-scrollView.getScrolly();
-			return parent.GetPosOnApplet(drawx, drawy);
+			return parent.GetRectOnApplet(new Rectangle(drawx,drawy,getRect().width,getRect().height));
 		}
 		return null;
 		
@@ -42,12 +42,13 @@ public abstract class ScrollComponent extends UIComponent {
 	@Override 
 	public void Draw() {
 		
-		PVector drawPos = GetDrawPosition();
-		if(drawPos!=null) {
+		Rectangle drawrect = GetDrawRectangle();
+		if(drawrect!=null) {
 			super.Draw();	
 		}else {
 		}
 	}
+
 	
 
 }

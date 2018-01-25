@@ -21,14 +21,16 @@ public class GameScene extends PApplet{
 	GameSceneMode mode = GameSceneMode.MAP_VIEW;
 	UIView mainView = new UIView(new Rectangle(0,0,res_x,res_y),this);
 	MapView mapview = new MapView(new Rectangle((res_x/2)-500,(res_y/2)-400,1000,800),mainView,w.getMap());
+	RoutineEditorView editorView = new RoutineEditorView(new Rectangle((res_x/2)-500,(res_y/2)-400,1000,800),mainView,null);
 	Toolbar bar = new Toolbar(new Rectangle(0,0,20,res_y),mainView);
 	boolean[] keys= new boolean[255];
 	public void settings() {
 		size(res_x,res_y);
-		mainView.getComponents().add(mapview);
+		//mainView.getComponents().add(mapview);
 		Random r = new Random();
 		currentView=mainView;
-		w.SetCurrentView(mapview);
+		mainView.AddComponent(editorView);
+		/*w.SetCurrentView(mapview);
 		w.AddObject(new Bot(50,50,w));
 		WorldObject ob = data.Resources.Food.Create(-10,-10,w);
 		w.AddObject(ob);
@@ -36,7 +38,7 @@ public class GameScene extends PApplet{
 		bar.AddButton(0,"Hello",new Color(r.nextInt(255),r.nextInt(255),255),null);
 		bar.AddButton(0,"Hello",new Color(r.nextInt(255),r.nextInt(255),255),null);
 		bar.AddButton(0,"Hello",new Color(r.nextInt(255),r.nextInt(255),255),null);
-		mainView.getComponents().add(bar);
+		mainView.getComponents().add(bar);*/
 		//SwitchView(GameSceneMode.MAP_VIEW);
 	}
 	public void keyPressed() {

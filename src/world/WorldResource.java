@@ -35,9 +35,9 @@ public class WorldResource extends WorldObject {
 	@Override
 	public void DrawComponent() {
 		// TODO Auto-generated method stub
-		PVector pos = GetDrawPosition();
+		Rectangle drawrect = GetDrawRectangle();
 		getApplet().fill(type.getColor().getR(),type.getColor().getG(),type.getColor().getB());
-		getApplet().rect(pos.x,pos.y,getRect().getWidth(), getRect().getHeight());
+		getApplet().rect(drawrect.getX(),drawrect.getY(),drawrect.getWidth(),drawrect.getHeight());
 	}
 	
 }

@@ -67,8 +67,8 @@ public class Toolbar extends UIComponent {
 		// TODO Auto-generated method stub
 		applet.stroke(0);
 		applet.fill(80);
-		PVector pos = parent.GetPosOnApplet(rect.x, rect.y);
-		applet.rect(pos.x, pos.y, rect.width, rect.height);
+		Rectangle drawrect = GetDrawRectangle();
+		applet.rect(drawrect.x,drawrect.y,drawrect.width,drawrect.height);
 		for(int i=0;i<buttons.size();i++) {
 			for(int j=0;j<buttons.get(i).size();j++) {
 				Button button = buttons.get(i).get(j);

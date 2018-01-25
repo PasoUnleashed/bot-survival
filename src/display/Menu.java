@@ -15,8 +15,8 @@ public class Menu extends UIComponent{
 	public void DrawComponent() {
 		// TODO Auto-generated method stub
 		getApplet().fill(188);
-		PVector pos = GetDrawPosition();
-		getApplet().rect(pos.x,pos.y, getRect().getWidth(), getRect().getHeight());
+		Rectangle drawrect = GetDrawRectangle();
+		getApplet().rect(drawrect.x,drawrect.y,drawrect.width,drawrect.height);
 	}
 	
 	class MenuComponent{

@@ -26,9 +26,9 @@ public abstract class UIComponent extends UIView{
 	 * 
 	 */
 	@Override
-	public PVector GetPosOnApplet(float x,float y) {
-		PVector pos =new PVector(this.rect.getX()+x,this.rect.getY()+y);
-		return parent.GetPosOnApplet(pos.x, pos.y);
+	public Rectangle GetRectOnApplet(Rectangle rect) {
+		Rectangle pos =new Rectangle(this.rect.getX()+rect.x,this.rect.getY()+rect.y,rect.height,rect.width);
+		return parent.GetRectOnApplet(pos);
 	}
 	public UIView getParent() {
 		return parent;
@@ -50,8 +50,8 @@ public abstract class UIComponent extends UIView{
 		this.parent=view;
 		this.applet=view.applet;
 	}
-	public PVector GetDrawPosition() {
-		return parent.GetPosOnApplet(rect.x,rect.y);
+	public Rectangle GetDrawRectangle() {
+		return parent.GetRectOnApplet(rect);
 		
 	}
 	public abstract void DrawComponent();

@@ -30,13 +30,12 @@ public abstract class WorldObject extends ScrollComponent{
 		getApplet().noStroke();
 		super.Draw();
 		if(this.isSelected()) {
-			
-			PVector pos = GetDrawPosition();
-			if(pos!=null) {
+			Rectangle drawrect = GetDrawRectangle();
+			if(drawrect!=null) {
 				getApplet().fill(0,0,0,0);
 				getApplet().stroke(0,188,188);
 				getApplet().strokeWeight(2);
-				getApplet().rect(pos.x,pos.y, getRect().getWidth(),getRect().getHeight());
+				getApplet().rect(drawrect.getX(),drawrect.getY(),drawrect.getWidth(),drawrect.getHeight());
 			}
 		}
 		

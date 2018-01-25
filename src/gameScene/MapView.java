@@ -41,11 +41,13 @@ public class MapView extends ScrollView {
 	public void setSelected(WorldObject object){
 		selected=object;
 	}
+	
 	@Override
 	public void DrawComponent() {
 		this.getApplet().fill(0);
-		PVector pos = GetPosOnApplet(0,0);
-		getApplet().rect(pos.x,pos.y,getRect().getWidth(),getRect().getHeight());
+		Rectangle drawrect = GetDrawRectangle();
+		getApplet().rect(drawrect.getX(),drawrect.getY(),drawrect.getWidth(),drawrect.getHeight());
+		getApplet().stroke(255);
 	}
 	public void KeyPressed(char key) {
 		modkey=key;

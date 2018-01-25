@@ -58,6 +58,13 @@ public class UIView extends RectView{
 		}
 		return ret;
 	}
+	public void AddComponent(UIComponent e) {
+		components.add(e);
+	}
+	public void RemoveComponent(UIComponent e) {
+		components.remove(e);
+	}
+	
 	@Override
 	public void MouseReleased() {
 		ArrayList<UIComponent> components = new ArrayList<UIComponent>();
@@ -110,9 +117,9 @@ public class UIView extends RectView{
 		this.components = components;
 	}
 	public void DrawComponent() {
-		PVector pos = GetPosOnApplet(this.rect.x,this.rect.y);
+		Rectangle drawrect = this.GetDrawRectangle();
 		this.applet.fill(255);
-		this.applet.rect(pos.x, pos.y, rect.width,rect.height);
+		this.applet.rect(drawrect.x,drawrect.y,drawrect.width,drawrect.height);
 		
 		
 	}
