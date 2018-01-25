@@ -7,6 +7,13 @@ import processing.core.PApplet;
 public abstract class ScrollView extends UIComponent{
 	int scrollx,scrolly;
 	int rm_x,rm_y;
+	float zoom=1;
+	public float getZoom() {
+		return zoom;
+	}
+	public void setZoom(float zoom) {
+		this.zoom = zoom;
+	}
 	public ScrollView(Rectangle rect, UIView parent) {
 		super(rect, parent);
 		// TODO Auto-generated constructor stub

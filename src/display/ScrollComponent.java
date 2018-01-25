@@ -4,6 +4,7 @@ import processing.core.PVector;
 
 public abstract class ScrollComponent extends UIComponent {
 	ScrollView scrollView;
+	
 	public ScrollComponent(Rectangle rect, ScrollView parent) {
 		super(rect, parent);
 		scrollView=parent;

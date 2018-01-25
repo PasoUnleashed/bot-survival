@@ -11,6 +11,13 @@ public class Rectangle {
 		this.height = height;
 		
 	}
+	public Rectangle(float f, float g, float h, float i) {
+		this.x=(long) f;
+		this.y=(long) g;
+		this.width=(int) h;
+		this.height=(int) i;
+		
+	}
 	public long getX() {
 		return x;
 	}
