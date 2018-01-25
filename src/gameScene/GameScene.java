@@ -46,6 +46,7 @@ public class GameScene extends PApplet{
 				keys[Character.toUpperCase(key)]=true;
 			}
 			keys[key]=true;
+			mainView.KeyPressed(key);
 		}
 	}
 	public void keyReleased() {
@@ -55,6 +56,7 @@ public class GameScene extends PApplet{
 				keys[Character.toUpperCase(key)]=false;
 			}
 			keys[key]=false;
+			mainView.KeyReleased(key);
 		}
 	}
 	public void draw() {

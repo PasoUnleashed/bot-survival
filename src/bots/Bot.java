@@ -31,7 +31,6 @@ public class Bot extends world.WorldObject {
 	 * The bot's current memory
 	 */
 	RoutineMemory memory;
-	Button b;
 	/*
 	 * 
 	 * Create a bot at a certain position
@@ -41,70 +40,11 @@ public class Bot extends world.WorldObject {
 	 */
 	public Bot(long x, long y, World w) {
 		super(x, y, w);
-		int ids=0,vids=0;
-		RoutineMemory m = new RoutineMemory();
-		StartStep start = new StartStep(ids++);
-		GenerateRandomPositionStep random = new GenerateRandomPositionStep(ids++);
-		DebugStep debug = new DebugStep(ids++);
-		MoveToStep move = new MoveToStep(ids++);
-		start.SetOutcomeNext(0,random);
-		random.SetOutcomeNext(0,debug);
-		debug.SetOutcomeNext(0, move);
-		Variable a=random.GetOutcome(0).getOutputs().get(0).CreateVar(vids++);
-		debug.SetInputVariable(0, a);
-		move.SetInputVariable(0, a);
-		move.SetOutcomeNext(0, new EmptyFinalStep(ids++));
-		Routine routine = new Routine(3,start,"main",new StepOutcome[0],new StepInput[0]);
-		machine= new RoutineMachine(routine,m);
-		memory = m;
-		Button b = new Button(new Rectangle(this.getRect().getX()+20,this.getRect().getY()+20,10,10),this.getParent(),new ButtonEventHandler() {
-
-			@Override
-			public void OnClick() {
-				// TODO Auto-generated method stub
-				world.AddObject(new Bot(getRect().getX(),getRect().getY(),world));
-			}
-
-			@Override
-			public void OnEnter() {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void OnLeave() {
-				// TODO Auto-generated method stub
-				
-			}
-			
-		},"hello",new Color(255,0,0),null);
-		b.Hide();
-		this.b=b;
+		
 	}
 	@Override
 	public void SetView(UIView view) {
 		super.SetView(view);
-		view.getComponents().add(b);
-		b.SetView(view);
-	}
-	/*
-	 * (non-Javadoc)
-	 * @see world.WorldObject#Update()
-	 */
-	@Override
-	public void Frame() {
-		machine.ExecuteStep(this,this.world);
-		b.getRect().setX(this.getRect().getX()+20);
-		b.getRect().setY(this.getRect().getY()-20);
-		float distance =PApplet.dist(getParent().getMouseX(), getParent().getMouseY(), getRect().getX(),getRect().getY());
-		System.out.println(distance);
-		if(distance<60) {
-			b.Show();
-			
-		}else {
-			b.Hide();
-		}
-		super.Frame();
 	}
 	/*
 	 * (non-Javadoc)

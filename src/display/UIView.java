@@ -1,8 +1,10 @@
 package display;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import processing.core.PApplet;
+import processing.core.PVector;
 /*
  * The UI
  */
@@ -37,7 +39,7 @@ public class UIView extends RectView{
 		ArrayList<UIComponent> components = new ArrayList<UIComponent>();
 		components.addAll(this.components);
 		for(UIComponent i : components) {
-			if(i.mouseOver) {
+			if(i.mouseOver&&i.isHidden()) {
 				i.MouseClick();
 				break;
 			}
@@ -49,7 +51,7 @@ public class UIView extends RectView{
 		components.addAll(this.components);
 		boolean ret = false;
 		for(UIComponent i : components) {
-			if(i.mouseOver) {
+			if(i.mouseOver&&!i.isHidden()) {
 				ret = ret||i.MousePressed();
 				break;
 			}
@@ -60,9 +62,10 @@ public class UIView extends RectView{
 	public void MouseReleased() {
 		ArrayList<UIComponent> components = new ArrayList<UIComponent>();
 		components.addAll(this.components);
-		for(UIComponent i : components) {
-			if(i.mouseOver)
+		for(UIComponent i :components) {
+			if(!i.isHidden()&&i.mouseOver) {
 				i.MouseReleased();
+			}
 		}
 	}
 	public void Frame() {
@@ -75,14 +78,31 @@ public class UIView extends RectView{
 		}
 		
 	}
-	
+	public void KeyPressed(char key) {
+		ArrayList<UIComponent> components = new ArrayList<UIComponent>();
+		components.addAll(this.components);
+		for(UIComponent i : components) {
+			if(!i.isHidden()) {
+				i.KeyPressed(key);
+			}
+		}
+	}
+	public void KeyReleased(char key) {
+		ArrayList<UIComponent> components = new ArrayList<UIComponent>();
+		components.addAll(this.components);
+		for(UIComponent i : components) {
+			if(!i.isHidden()) {
+				i.KeyReleased(key);
+			}
+		}
+	}
 	public void Draw() {
 		ArrayList<UIComponent> components = new ArrayList<UIComponent>();
 		components.addAll(this.components);
 		DrawComponent();
-		for(UIComponent i : components) {
-			if(!i.isHidden()) {
-				i.Draw();
+		for(int i=components.size()-1;i>=0;i--) {
+			if(!components.get(i).isHidden()) {
+				components.get(i).Draw();
 			}
 		}
 	}
@@ -90,6 +110,10 @@ public class UIView extends RectView{
 		this.components = components;
 	}
 	public void DrawComponent() {
+		PVector pos = GetPosOnApplet(this.rect.x,this.rect.y);
+		this.applet.fill(255);
+		this.applet.rect(pos.x, pos.y, rect.width,rect.height);
+		
 		
 	}
 

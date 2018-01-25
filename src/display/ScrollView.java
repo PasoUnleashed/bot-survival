@@ -50,9 +50,20 @@ public abstract class ScrollView extends UIComponent{
 		ArrayList<UIComponent> components = new ArrayList<UIComponent>();
 		components.addAll(this.components);
 		for(UIComponent i : components) {
-			i.SetKeys(keys, mouseX, mouseY);
+			if(ScrollComponent.class.isAssignableFrom(i.getClass())) {
+				i.SetKeys(keys, mouseX, mouseY);
+			}else {
+				i.SetKeys(keys, getLmouseX(), getLmouseY());
+			}
+			
 		}
 		
+	}
+	public int getLmouseX() {
+		return mouseX-scrollx;
+	}
+	public int getLmouseY() {
+		return mouseY-scrolly;
 	}
 
 

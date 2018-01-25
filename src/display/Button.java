@@ -56,6 +56,7 @@ public class Button extends UIComponent{
 	ButtonEventHandler handler;
 	boolean isPressed=false;
 	//Overriding the MousePressed() function of RectView, so that we can invoke behavior upon mouse events 
+	
 	@Override
 	public boolean MousePressed() {
 		isPressed=true;
@@ -80,6 +81,7 @@ public class Button extends UIComponent{
 		super.Frame();
 		if(isPressed) {
 			color=pressColor;
+			
 		}else if(mouseOver) {
 			color=hoverColor;
 		}else {

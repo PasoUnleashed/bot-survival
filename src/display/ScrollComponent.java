@@ -14,6 +14,12 @@ public abstract class ScrollComponent extends UIComponent {
 		this.parent=this.scrollView=(ScrollView)view;
 		this.applet=view.applet;
 	}
+	public ScrollView getScrollView() {
+		return scrollView;
+	}
+	public void setScrollView(ScrollView scrollView) {
+		this.scrollView = scrollView;
+	}
 	public boolean IsInView() {
 		long drawx = this.rect.getX()-scrollView.getScrollx();
 		long drawy = this.rect.getY()-scrollView.getScrolly();

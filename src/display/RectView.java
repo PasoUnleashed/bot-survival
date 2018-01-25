@@ -7,6 +7,8 @@ import processing.core.PVector;
  */
 public abstract class RectView {
 	Rectangle rect;
+	static int ids=0;
+	int id;
 	boolean mouseOver=false;
 	protected int mouseX=-1,mouseY=-1;
 	PApplet applet;
@@ -21,6 +23,7 @@ public abstract class RectView {
 	public RectView(Rectangle rect,PApplet applet) {
 		this.rect=rect;
 		this.applet=applet;
+		id=ids++;
 	}
 	
 	public int getMouseX() {
@@ -130,6 +133,21 @@ public abstract class RectView {
 	}
 	public void MouseReleased() {
 		
+	}
+	public void KeyPressed(char key) {
+		
+	}
+	public void KeyReleased(char key) {
+		
+	}
+	@Override
+	public boolean equals(Object other) {
+		if(RectView.class.isAssignableFrom(other.getClass())) {
+			if(((RectView)other).id==id) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	
