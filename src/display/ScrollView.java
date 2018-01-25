@@ -8,6 +8,7 @@ public abstract class ScrollView extends UIComponent{
 	int scrollx,scrolly;
 	int rm_x,rm_y;
 	float zoom=1;
+	int speed=3;
 	public float getZoom() {
 		return zoom;
 	}
@@ -22,7 +23,7 @@ public abstract class ScrollView extends UIComponent{
 		super.Frame();
 		int x=0;
 		int y=0;
-		int speed=3;
+		
 		if(keys['w']) {
 			y-=speed;
 		}

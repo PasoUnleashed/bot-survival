@@ -9,6 +9,7 @@ import display.Rectangle;
 import display.Toolbar;
 import display.UIView;
 import gameScene.routineEditor.RoutineEditorView;
+import gameScene.routineEditor.TestNode;
 import processing.core.PApplet;
 import world.Map;
 import world.World;
@@ -30,6 +31,7 @@ public class GameScene extends PApplet{
 		Random r = new Random();
 		currentView=mainView;
 		mainView.AddComponent(editorView);
+		editorView.AddComponent(new TestNode(new Rectangle(0,0,3,3),editorView));
 		/*w.SetCurrentView(mapview);
 		w.AddObject(new Bot(50,50,w));
 		WorldObject ob = data.Resources.Food.Create(-10,-10,w);
