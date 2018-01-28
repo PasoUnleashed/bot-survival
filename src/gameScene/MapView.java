@@ -10,6 +10,7 @@ import display.UIComponent;
 import display.UIView;
 import processing.core.PApplet;
 import processing.core.PVector;
+import world.Circle;
 
 public class MapView extends ScrollView {
 	Map map;
@@ -27,6 +28,8 @@ public class MapView extends ScrollView {
 		if(!child) {
 			if(modkey=='o') {
 				map.getWorld().AddObject(new Outpost(mouseX,mouseY,map.getWorld()));
+			}else if(modkey =='c'){
+				map.getWorld().AddObject(new Circle(mouseX,mouseY,map.getWorld()));	
 			}else {
 				selected = null;
 			}
@@ -49,6 +52,7 @@ public class MapView extends ScrollView {
 		getApplet().rect(drawrect.getX(),drawrect.getY(),drawrect.getWidth(),drawrect.getHeight());
 		getApplet().stroke(255);
 	}
+	@Override
 	public void KeyPressed(char key) {
 		modkey=key;
 	}

@@ -27,7 +27,7 @@ public abstract class UIComponent extends UIView{
 	 */
 	@Override
 	public Rectangle GetRectOnApplet(Rectangle rect) {
-		Rectangle pos =new Rectangle(this.rect.getX()+rect.x,this.rect.getY()+rect.y,rect.height,rect.width);
+		Rectangle pos =new Rectangle(this.rect.getX()+rect.x,this.rect.getY()+rect.y,rect.width,rect.height);
 		return parent.GetRectOnApplet(pos);
 	}
 	public UIView getParent() {

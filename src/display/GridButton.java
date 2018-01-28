@@ -1,34 +1,9 @@
 package display;
 
-import processing.core.PApplet;
 import processing.core.PImage;
-import processing.core.PVector;
-/*
- * A button to be drawn on a UIView, it must be passed a handler to execute a task.
- * An example handler using the anonymous object syntax would be
- * 
-	ButtonEventHandler h = new ButtonEventHandler(){
 
-			@Override
-			public void OnClick() {
-				System.out.println("Hello World!");
-			}
-
-			@Override
-			public void OnEnter() {
-				//Do nothing
-			}
-
-			@Override
-			public void OnLeave() {
-				//Do nothing
-			}
-			
-	}
- */
-
-public class Button extends UIComponent{
-	/*
+public class GridButton extends GridComponent{
+		/*
 	 * @param rect The rectangle the button should be drawn in
 	 * @param parent The RectView which contains this component
 	 * @param handler The button event handler
@@ -38,7 +13,7 @@ public class Button extends UIComponent{
 	 */
 	// TODO Add Another constructor so that a button can either be initialized with an image
 	// or a color set (default,hover,press) 
-	public Button(Rectangle rect, UIView parent,ButtonEventHandler handler,String text, Color color, PImage image) {
+	public GridButton(Rectangle rect, GridScrollView parent,ButtonEventHandler handler,String text, Color color, PImage image) {
 		super(rect, parent);
 		this.image=image;
 		this.color=color;
@@ -59,7 +34,6 @@ public class Button extends UIComponent{
 	
 	@Override
 	public boolean MousePressed() {
-		System.out.println("Press");
 		isPressed=true;
 		return true;
 	}

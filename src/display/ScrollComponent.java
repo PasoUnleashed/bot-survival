@@ -43,7 +43,7 @@ public abstract class ScrollComponent extends UIComponent {
 	public void Draw() {
 		
 		Rectangle drawrect = GetDrawRectangle();
-		if(drawrect!=null) {
+		if(drawrect!=null&&IsInView()) {
 			super.Draw();	
 		}else {
 		}

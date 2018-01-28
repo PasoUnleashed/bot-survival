@@ -33,7 +33,13 @@ public abstract class Step {
 		this.name=name;
 		this.id=id;
 	}
-	
+	public int GetTotalOutputCount(){
+		int total=0;
+		for(StepOutcome i : this.outcomes){
+			total+=i.outputs.size();
+		}
+		return total;
+	}
 	public ArrayList<StepOutcome> getOutcomes() {
 		return outcomes;
 	}

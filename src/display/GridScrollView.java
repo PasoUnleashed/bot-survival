@@ -1,16 +1,21 @@
 package display;
 
-import gameScene.routineEditor.TestNode;
+import java.util.ArrayList;
 
+import gameScene.routineEditor.TestNode;
+/*
+* A grid scroll view stores components in "tiles" or "squares" and they can span multiple ones, as in (1,1,3,3) is a rectangle starting from tile 1,1 and ending in tiles 4,4
+*
+*/
 public class GridScrollView extends ScrollView {
 	int gridlength=20;
 	int gridoffsetx=0,gridoffsety=0;
-	TestNode cursor = new TestNode(new Rectangle(0,0, 1, 1), this);
+	
 	public GridScrollView(Rectangle rect, UIView parent) {
 		super(rect, parent);
 		// TODO Auto-generated constructor stub
 		
-		AddComponent(cursor);
+		
 	}
 	public void DrawGrid() {
 		int start = -Math.floorMod(this.getScrollx(),gridlength);
@@ -33,10 +38,25 @@ public class GridScrollView extends ScrollView {
 	@Override
 	public void Frame() {
 		super.Frame();
-		//speed=gridlength;
-		cursor.getRect().setX(mouseX);
-		cursor.getRect().setY(mouseY);
-		System.out.println(mouseX);
+	
+	}
+	@Override
+	public boolean MousePressed() {
+		boolean ret= false;
+		ArrayList<UIComponent> com = new ArrayList<>();
+		for(UIComponent i : this.components){
+			com.add(i);
+		}
+		for(UIComponent i: com){
+			if(i.rect.Contains(new Rectangle(mouseX,mouseY, 0,0))){
+				ret = ret||i.MousePressed();
+			}
+		}
+		return ret;
+	}
+	public Rectangle GetBoundingRectangle(){
+		return new Rectangle(scrollx/gridlength,scrolly/gridlength , rect.getWidth()/gridlength, rect.getHeight()/gridlength);
+		
 	}
 	@Override
 	public void SetKeys(boolean[] keys, int x, int y) {
@@ -50,8 +70,9 @@ public class GridScrollView extends ScrollView {
 		// TODO Auto-generated method stub
 		Background(0, 0, 0);
 		DrawGrid();
-		getApplet().fill(255);
-		
+	}
+	public int getGridLength(){
+		return gridlength;
 	}
 
 }
