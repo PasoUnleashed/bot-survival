@@ -50,7 +50,7 @@ public class Rectangle {
 		}
 	}
 	public boolean Contains(Rectangle other) {
-		if(other.x>=x && other.x+other.width<=width+x&&other.y>=y&&other.y+other.height<=y+height) {
+		if(other.x>=x && other.width<=width&&other.y>=y&&other.height<=height) {
 			return true;
 		}
 		return false;

@@ -24,7 +24,6 @@ public abstract class Node extends GridComponent {
 	@Override
 	public void DrawComponent(){
 		Rectangle rect = GetDrawRectangle();
-		System.out.println(rect.getWidth()+","+rect.getHeight());
 		getApplet().fill(GetColor().getR(),GetColor().getG(),GetColor().getB());
 		getApplet().rect(rect.getX(),rect.getY(),rect.getWidth(),rect.getHeight());
 	}

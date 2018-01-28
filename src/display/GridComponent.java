@@ -26,7 +26,7 @@ public abstract class GridComponent extends ScrollComponent {
 	}
 	@Override
 	public boolean IsInView() {
-		return parent.GetDrawRectangle().Contains(GetDrawRectangle());
+		return parent.GetBoundingRectangle().Contains(rect);
 	}
 	@Override
 	public void SetKeys(boolean[] keys,int x,int y){

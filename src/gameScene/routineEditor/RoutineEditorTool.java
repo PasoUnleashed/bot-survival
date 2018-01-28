@@ -8,11 +8,15 @@ public abstract class RoutineEditorTool extends Node {
 		super(rect,parent);
 	}
 	public abstract void DrawGhost();
-	public abstract void OnClick(Node n);
-	public abstract void OnClick();
+	public abstract boolean OnClick();
 	@Override
 	public void DrawComponent(){
 		DrawGhost();
+	}
+	@Override
+	public boolean MousePressed() {
+		return OnClick();
+		
 	}
 	
 	

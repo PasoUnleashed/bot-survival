@@ -19,6 +19,7 @@ public abstract class ScrollView extends UIComponent{
 		super(rect, parent);
 		// TODO Auto-generated constructor stub
 	}
+	
 	public void Frame() {
 		super.Frame();
 		int x=0;

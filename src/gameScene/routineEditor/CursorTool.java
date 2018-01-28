@@ -19,14 +19,10 @@ public class CursorTool extends RoutineEditorTool{
 		this.getRect().setX(parent.getMouseX());
 		this.getRect().setY(parent.getMouseY());
 	}
-	@Override
-	public void OnClick(Node n) {
-
-	}
 
 	@Override
-	public void OnClick() {
-		
+	public boolean OnClick() {
+		return false;
 	}
 	@Override
 	protected Color GetColor() {

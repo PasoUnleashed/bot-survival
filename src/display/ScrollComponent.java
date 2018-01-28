@@ -22,30 +22,23 @@ public abstract class ScrollComponent extends UIComponent {
 		this.scrollView = scrollView;
 	}
 	public boolean IsInView() {
-		long drawx = this.rect.getX()-scrollView.getScrollx();
-		long drawy = this.rect.getY()-scrollView.getScrolly();
-		if(new Rectangle(0,0,parent.getRect().width,parent.getRect().height).Contains(new Rectangle(drawx,drawy,rect.width,rect.height))) {
-			return true;
-		}
-		return false;
+		return parent.GetDrawRectangle().Contains(GetDrawRectangle());
 	}
 	@Override 
 	public Rectangle GetDrawRectangle() {
-		if(IsInView()) {
-			long drawx = this.rect.getX()-scrollView.getScrollx();
-			long drawy = this.rect.getY()-scrollView.getScrolly();
-			return parent.GetRectOnApplet(new Rectangle(drawx,drawy,getRect().width,getRect().height));
-		}
-		return null;
+		long drawx = this.rect.getX()-scrollView.getScrollx();
+		long drawy = this.rect.getY()-scrollView.getScrolly();
+		return parent.GetRectOnApplet(new Rectangle(drawx,drawy,getRect().width,getRect().height));
 		
 	}
 	@Override 
 	public void Draw() {
 		
 		Rectangle drawrect = GetDrawRectangle();
-		if(drawrect!=null&&IsInView()) {
+		if(IsInView()) {
 			super.Draw();	
 		}else {
+			
 		}
 	}
 

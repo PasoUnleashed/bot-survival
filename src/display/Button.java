@@ -59,7 +59,7 @@ public class Button extends UIComponent{
 	
 	@Override
 	public boolean MousePressed() {
-		System.out.println("Press");
+		
 		isPressed=true;
 		return true;
 	}
@@ -68,6 +68,7 @@ public class Button extends UIComponent{
 		isPressed=false;
 		if(handler!=null) {
 			handler.OnClick();
+			System.out.println("Click:"+text);
 		}
 	}
 	//Overriding the MouseLeave() function of RectView, so that we can invoke behavior upon mouse events

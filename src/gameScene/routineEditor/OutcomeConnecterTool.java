@@ -1,14 +1,13 @@
 package gameScene.routineEditor;
 
-import display.Color;
+import routines.StepOutcome;
 import display.Rectangle;
-import routines.routineExecution.Variable;
-
-public class ConnecterTool extends RoutineEditorTool{
-	Variable var;
-	public ConnecterTool(RoutineEditorView parent,Variable variable){
+import display.*;
+public class OutcomeConnecterTool extends RoutineEditorTool{
+	StepOutcome outcome;
+	public OutcomeConnecterTool(RoutineEditorView parent,StepOutcome outcome){
 		super(new Rectangle(parent.getMouseX(),parent.getMouseY(),1,1),parent);
-		this.var=variable;
+		this.outcome=outcome;
 	}
 
 	@Override
@@ -25,5 +24,4 @@ public class ConnecterTool extends RoutineEditorTool{
 	protected Color GetColor() {
 		return new Color(255,255,0);
 	} 
-
 }

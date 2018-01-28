@@ -54,6 +54,31 @@ public class GridScrollView extends ScrollView {
 		}
 		return ret;
 	}
+	@Override
+	public void MouseClick() {
+		ArrayList<UIComponent> com = new ArrayList<>();
+		for(UIComponent i : this.components){
+			com.add(i);
+		}
+		for(UIComponent i: com){
+			if(i.rect.Contains(new Rectangle(mouseX,mouseY, 0,0))){
+				i.MouseClick();
+			}
+		}
+	}
+	@Override
+	public void MouseReleased() {
+		ArrayList<UIComponent> com = new ArrayList<>();
+		for(UIComponent i : this.components){
+			com.add(i);
+		}
+		for(UIComponent i: com){
+			if(i.rect.Contains(new Rectangle(mouseX,mouseY, 0,0))){
+				i.MouseReleased();
+			}
+		}
+		
+	}
 	public Rectangle GetBoundingRectangle(){
 		return new Rectangle(scrollx/gridlength,scrolly/gridlength , rect.getWidth()/gridlength, rect.getHeight()/gridlength);
 		
@@ -64,6 +89,7 @@ public class GridScrollView extends ScrollView {
 
 		mouseX=mouseX>0?mouseX/gridlength:Math.floorDiv(mouseX, gridlength);
 		mouseY=mouseY>0?mouseY/gridlength:Math.floorDiv(mouseY, gridlength);
+		
 	}
 	@Override
 	public void DrawComponent() {
